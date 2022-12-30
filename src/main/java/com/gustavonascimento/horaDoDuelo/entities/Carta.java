@@ -67,7 +67,7 @@ public class Carta implements Serializable{
 	@Override
 	public int hashCode() 
 	{
-		return Objects.hash(id);
+		return Objects.hash(atributes);
 	}
 
 	@Override
@@ -80,6 +80,6 @@ public class Carta implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Carta other = (Carta) obj;
-		return Objects.equals(id, other.id);
+		return Objects.equals(atributes, other.atributes);
 	}
 }

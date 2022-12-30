@@ -6,7 +6,6 @@ import org.springframework.data.jpa.repository.Query;
 import com.gustavonascimento.horaDoDuelo.entities.Duelo;
 
 public interface RepositorioDuelo extends JpaRepository<Duelo, Long>{
-	
 	@Query(value="SELECT COUNT(*) FROM Duelo WHERE vencedor=?1")
 	long vitoriasAcumuladas(long id);
 }

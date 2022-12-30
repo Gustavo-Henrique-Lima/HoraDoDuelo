@@ -76,7 +76,6 @@ public class ResourceCarta {
 		return ResponseEntity.ok().body(obj);
 	}
 	
-	
 	@GetMapping(value="/duelo/player1={id}/player2={id2}")
 	public ResponseEntity<Duelo> duelo(@PathVariable Long id,@PathVariable Long id2)
 	{
@@ -92,16 +91,9 @@ public class ResourceCarta {
 		else
 		{
 			Duelo d1=servCarta.duel(c1,c2);
-			if(d1.equals(null))
-			{
-				return ResponseEntity.status(406).body(null);
-			}
-			else
-			{
-				servDuel.insert(d1);
-				URI uri= ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(d1.getId()).toUri();
-				return ResponseEntity.created(uri).body(d1);
-			}
+			servDuel.insert(d1);
+			URI uri= ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(d1.getId()).toUri();
+			return ResponseEntity.created(uri).body(d1);
 		}
 	}
 }

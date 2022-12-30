@@ -5,7 +5,7 @@ Hora Do Duelo é uma aplicação que foi criada para aprimorar meus conhecimento
 
 A aplicação consiste em uma API  de comparação de cartas, onde é possível enviar duas cartas para a aplicação fazer uma comparação de 
 atributos e a carta com a maior quantidade de atributos fortes será a vencedora. 
-## O que ela dispõe:
+## O que ela dispõe
 Operações para cadastro, listagem, consulta e alteração de cartas;<br>
 Operações para comparação de cartas e resultado acumulado;<br>
 Banco de dados para armazenar as cartas e os resultados das comparações;<br>

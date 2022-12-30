@@ -4,12 +4,15 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import com.gustavonascimento.horaDoDuelo.entities.Atributos;
 import com.gustavonascimento.horaDoDuelo.entities.Carta;
 import com.gustavonascimento.horaDoDuelo.entities.Duelo;
 import com.gustavonascimento.horaDoDuelo.repository.RepositorioCarta;
+import com.gustavonascimento.horaDoDuelo.services.exceptions.DatabaseException;
 import com.gustavonascimento.horaDoDuelo.services.exceptions.ResourceNotFoundException;
 
 @Service
@@ -33,7 +36,21 @@ public class ServicoCarta {
 	{
 		return repoCarta.save(obj);
 	}
-	
+	public void delete(Long id)
+	{
+		try
+		{
+			repoCarta.deleteById(id);
+		}
+		catch(EmptyResultDataAccessException e)
+		{
+			throw new ResourceNotFoundException(id);
+		}
+		catch(DataIntegrityViolationException e)
+		{
+			throw new DatabaseException(e.getMessage());
+		}
+	}
 	public Duelo duel(Carta obj1,Carta obj2)
 	{
 		long hp=(obj1.getAtributes().getHp()>obj2.getAtributes().getHp()?obj1.getId():obj2.getId());

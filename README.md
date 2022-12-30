@@ -9,7 +9,7 @@ atributos e a carta com a maior quantidade de atributos fortes será a vencedora
 Operações para cadastro, listagem, consulta e alteração de cartas;<br>
 Operações para comparação de cartas e resultado acumulado;<br>
 Banco de dados para armazenar as cartas e os resultados das comparações;<br>
-Operação de exclusão de cartas
+Operação de exclusão de cartas.
 
 # Tecnologias utilizadas
 - Java

@@ -16,4 +16,11 @@ public class ServicoDuelo {
 	{
 		return repoDuel.save(obj);
 	}
+
+
+	public long vitoriasAcumuladas(long id)
+	{
+		return repoDuel.vitoriasAcumuladas(id);
+	}
+
 }

@@ -62,6 +62,13 @@ public class ResourceCarta {
 		return ResponseEntity.noContent().build();
 	}
 	
+	@GetMapping(value="/duelos/vitorias")
+	public ResponseEntity<String> totalVitorias()
+	{
+		long qtd=servDuel.vitoriasAcumuladas(1l);
+		long qtd2=servDuel.vitoriasAcumuladas(2l);
+		return ResponseEntity.ok("PlayerOne:"+qtd+"\nPlayerTwo:"+qtd2);
+	}
 	@PutMapping(value= "/{id}")
 	public ResponseEntity<Carta> atualizar(@PathVariable Long id, @RequestBody Carta obj)
 	{

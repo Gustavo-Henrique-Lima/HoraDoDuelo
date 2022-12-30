@@ -9,12 +9,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
-import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name="duelos")
 public class Duelo implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
@@ -50,22 +48,22 @@ public class Duelo implements Serializable{
 		this.id = id;
 	}
 
-	public Long getIdVencedor() 
+	public Long getVencedor() 
 	{
 		return vencedor;
 	}
 
-	public void setIdVencedor(Long vencedor) 
+	public void setVencedor(Long vencedor) 
 	{
 		this.vencedor = vencedor;
 	}
 
-	public Long getIdPerdedor() 
+	public Long getPerdedor() 
 	{
 		return perdedor;
 	}
 
-	public void setIdPerdedor(Long perdedor) 
+	public void setPerdedor(Long perdedor) 
 	{
 		this.perdedor = perdedor;
 	}

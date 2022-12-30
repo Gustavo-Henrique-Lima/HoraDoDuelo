@@ -27,7 +27,7 @@ public class ServicoCarta {
 	{
 		return repoCarta.findAll();
 	}
-	
+
 	public Carta findById(Long id)
 	{
 		Optional<Carta> obj=repoCarta.findById(id);

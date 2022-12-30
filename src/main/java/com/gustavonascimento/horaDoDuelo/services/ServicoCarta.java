@@ -3,6 +3,8 @@ package com.gustavonascimento.horaDoDuelo.services;
 import java.util.List;
 import java.util.Optional;
 
+import javax.persistence.EntityNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -36,6 +38,7 @@ public class ServicoCarta {
 	{
 		return repoCarta.save(obj);
 	}
+	
 	public void delete(Long id)
 	{
 		try
@@ -51,6 +54,26 @@ public class ServicoCarta {
 			throw new DatabaseException(e.getMessage());
 		}
 	}
+	public Carta update(Long id,Carta obj)
+	{
+		try
+		{
+			Carta obj1 =repoCarta.getReferenceById(id);
+			updateDatas(obj1,obj);
+			return repoCarta.save(obj1);
+		}
+		catch(EntityNotFoundException e)
+		{
+			throw new ResourceNotFoundException(id);
+		}
+	}
+	
+	private void updateDatas(Carta obj1, Carta obj2) 
+	{
+		obj1.setName(obj2.getName());
+		obj1.setAtributes(obj2.getAtributes());
+	}
+	
 	public Duelo duel(Carta obj1,Carta obj2)
 	{
 		long hp=(obj1.getAtributes().getHp()>obj2.getAtributes().getHp()?obj1.getId():obj2.getId());

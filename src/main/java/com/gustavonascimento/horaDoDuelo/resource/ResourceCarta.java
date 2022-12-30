@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -53,12 +54,22 @@ public class ResourceCarta {
 		URI uri= ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).body(obj);
 	}
+	
 	@DeleteMapping(value= "/{id}")
 	public ResponseEntity<Void> deletar(@PathVariable Long id)
 	{
 		servCarta.delete(id);
 		return ResponseEntity.noContent().build();
 	}
+	
+	@PutMapping(value= "/{id}")
+	public ResponseEntity<Carta> atualizar(@PathVariable Long id, @RequestBody Carta obj)
+	{
+		obj=servCarta.update(id, obj);
+		return ResponseEntity.ok().body(obj);
+	}
+	
+	
 	@GetMapping(value="/duelo/player1={id}/player2={id2}")
 	public ResponseEntity<Duelo> duelo(@PathVariable Long id,@PathVariable Long id2)
 	{

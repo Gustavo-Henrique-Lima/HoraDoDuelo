@@ -18,7 +18,7 @@ Operação de exclusão de cartas.
 - H2
 - Swagger
 # Como executar o projeto
-Pré-requisitos: Java 11
+Pré-requisitos: Java 11+
 
 ```bash
 # clonar repositório
